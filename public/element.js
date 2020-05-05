@@ -68,14 +68,20 @@ customElements.define('x-frame-bypass', class extends HTMLIFrameElement {
         }).catch(e => console.error('Cannot load X-Frame-Bypass:', e));
     }
     pause () {
-        this.head = this.contentDocument.head.innerHTML;
-        this.body = this.contentDocument.body.innerHTML;
-        this.contentDocument.head.innerHTML = '';
-        this.contentDocument.body.innerHTML = '';
+        if (!this.paused) {
+            this.head = this.contentDocument.head.innerHTML;
+            this.body = this.contentDocument.body.innerHTML;
+            this.contentDocument.head.innerHTML = '';
+            this.contentDocument.body.innerHTML = '';
+        }
+        this.paused = true;
     }
     unpause () {
-        this.contentDocument.head.innerHTML = this.head;
-        this.contentDocument.body.innerHTML = this.body;
+        if (this.paused) {
+            this.contentDocument.head.innerHTML = this.head;
+            this.contentDocument.body.innerHTML = this.body;
+        }
+        this.paused = false;
     }
     fetchProxy (url, options, i) {
         const proxy = [
@@ -103,10 +109,18 @@ customElements.define('pause-iframe', class extends HTMLIFrameElement {
         this.sandbox = '' + this.sandbox || 'allow-forms allow-modals allow-same-origin allow-scripts'; // all except allow-top-navigation // allow-pointer-lock allow-popups allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation
     }
     pause () {
-        this.previousSrc = this.src;
-        this.src = 'about:blank';
+        if (!this.paused) {
+            if (this.src !== 'about:blank') this.previousSrc = this.src;
+            this.src = 'about:blank';
+        }
+
+        this.paused = true;
     }
     unpause () {
-        this.src = this.previousSrc
+        if (this.paused && this.previousSrc) {
+            this.src = this.previousSrc;
+        }
+
+        this.paused = false;
     }
 }, { extends: 'iframe' });
