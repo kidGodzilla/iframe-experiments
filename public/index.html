@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Iframe Experiment</title>
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        iframe {
+            display: block;
+            width: calc(100% - 40px);
+            height: calc(100% - 40px);
+            margin: 20px;
+        }
+        img {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+    </style>
+
+    <!--<script src="https://cdn.jsdelivr.net/npm/@ungap/custom-elements-builtin@0.5.0/min.js"></script>-->
+    <script src="element.js" type="module"></script>
+</head>
+<body>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp; Fast <button onclick="document.querySelector('iframe').pause()">Pause</button> /
+<button onclick="document.querySelector('iframe').unpause()">Unpause</button>
+
+<!--<iframe is="x-frame-bypass" src="https://insightmodo.com/"></iframe>-->
+<!--<iframe is="pause-iframe" src="https://coronavirus.app/map"></iframe>-->
+<iframe is="x-frame-bypass" src="https://news.ycombinator.com/"></iframe>
+
+</body>
+</html>

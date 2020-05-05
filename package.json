@@ -1,0 +1,29 @@
+{
+  "name": "iframe-experiments",
+  "version": "1.0.0",
+  "description": "Toying around with customElements",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "frontend": "serve -p 3333",
+    "deploy": "git push dokku master",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kidGodzilla/iframe-experiments.git"
+  },
+  "author": "James Futhey <futhey@gmail.com> (http://jamesfuthey.com/)",
+  "bugs": {
+    "url": "https://github.com/kidGodzilla/iframe-experiments/issues"
+  },
+  "homepage": "https://github.com/kidGodzilla/iframe-experiments#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "express": "^4.17.1",
+    "http-proxy": "^1.18.0",
+    "mime": "^2.4.5",
+    "proxy-from-env": "^1.1.0",
+    "url": "^0.11.0"
+  }
+}
