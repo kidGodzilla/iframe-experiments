@@ -22,7 +22,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "express": "^4.17.1",
-    "http-proxy": "^1.18.0",
+    "http-proxy": "^1.18.1",
     "mime": "^2.4.5",
     "proxy-from-env": "^1.1.0",
     "url": "^0.11.0"
